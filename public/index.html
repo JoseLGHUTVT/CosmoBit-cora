@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10233f">
+  <meta name="description" content="Explora el universo con noticias espaciales, favoritos y funciones sin conexión.">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="/icons/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+  <title>CosmoBitácora | ExploraPWA</title>
+</head>
+<body>
+  <section id="splash" class="splash" aria-label="Pantalla de carga">
+    <div class="planet"><span></span></div>
+    <p class="eyebrow">TU VENTANA AL UNIVERSO</p>
+    <h1>Cosmo<span>Bitácora</span></h1>
+    <p class="splash-copy">Historias del espacio, incluso sin conexión.</p>
+    <div class="loader" aria-label="Cargando"></div>
+  </section>
+
+  <div id="app" class="app hidden">
+    <div id="updateBanner" class="update-banner hidden" role="status">
+      <span>Hay una nueva versión de la aplicación disponible.</span>
+      <button id="updateBtn" class="small-btn" type="button">Actualizar ahora</button>
+    </div>
+    <header class="topbar">
+      <a class="brand" href="#inicio" aria-label="CosmoBitácora inicio"><span class="brand-icon">✦</span><span>Cosmo<strong>Bitácora</strong></span></a>
+      <div class="status-wrap"><span id="connectionDot" class="dot"></span><span id="connectionText">Comprobando conexión…</span></div>
+    </header>
+
+    <main>
+      <section class="hero" id="inicio">
+        <div class="hero-copy">
+          <p class="eyebrow">BITÁCORA DE EXPLORACIÓN</p>
+          <h1>El universo<br><span>está más cerca.</span></h1>
+          <p>Descubre misiones, lanzamientos y hallazgos espaciales. Guarda lo que te inspire y consúltalo después.</p>
+          <button id="refreshBtn" class="button button-light" data-needs-online>↻ Actualizar noticias</button>
+        </div>
+        <div class="orbit-art" aria-hidden="true"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="big-planet"></div><i class="star star-one">✦</i><i class="star star-two">✧</i><i class="star star-three">·</i></div>
+      </section>
+
+      <nav class="tabs" aria-label="Navegación principal">
+        <button class="tab active" data-view="noticias">Noticias</button>
+        <button class="tab" data-view="favoritos">Favoritos <span id="favCount" class="count">0</span></button>
+        <button class="tab" data-view="bitacora">Mi bitácora <span id="pendingCount" class="count">0</span></button>
+      </nav>
+
+      <section class="content">
+        <div class="section-heading">
+          <div><p class="eyebrow" id="sectionEyebrow">ACTUALIDAD ESPACIAL</p><h2 id="sectionTitle">Últimas noticias</h2></div>
+          <div class="heading-actions"><button id="newsModeBtn" class="text-button" type="button" data-needs-online></button><span id="sourceBadge" class="source-badge">API externa</span></div>
+        </div>
+        <div id="message" class="message hidden"></div>
+        <div id="newsGrid" class="news-grid" aria-live="polite"></div>
+        <div id="journalPanel" class="journal-panel hidden">
+          <div class="form-card">
+            <h3>Agregar una nota a tu bitácora</h3>
+            <p>La nota se guarda primero en este dispositivo. Cuando vuelva internet, podrás sincronizarla con el servidor.</p>
+            <form id="noteForm">
+              <label for="noteTitle">Título</label><input id="noteTitle" maxlength="180" required placeholder="Ej. Misión que quiero investigar">
+              <label for="noteDetail">Nota</label><textarea id="noteDetail" maxlength="2000" rows="4" placeholder="Escribe tus observaciones…"></textarea>
+              <div class="location-box">
+                <button type="button" id="locBtn" class="button button-outline">📍 Adjuntar mi ubicación</button>
+                <button type="button" id="locClear" class="text-button hidden">Quitar</button>
+                <p id="locStatus" class="hint" aria-live="polite">Opcional. El navegador te pedirá permiso para acceder a tu ubicación.</p>
+              </div>
+              <button class="button button-primary" type="submit">Guardar nota sin conexión</button>
+            </form>
+            <div class="notif-box">
+              <h4>Notificaciones</h4>
+              <p id="notifStatus" class="hint" aria-live="polite"></p>
+              <button type="button" id="notifBtn" class="button button-outline">🔔 Activar notificaciones</button>
+              <button type="button" id="notifTestBtn" class="button button-outline hidden">🔔 Notificarme la última noticia</button>
+            </div>
+          </div>
+          <div class="journal-tools"><h3>Registros guardados</h3><button id="syncBtn" class="button button-outline" data-needs-online>⇅ Sincronizar pendientes</button></div>
+          <div id="journalList" class="journal-list"></div>
+          <div class="server-records"><h3>Registros recibidos por el servidor</h3><button id="loadServerBtn" class="text-button" data-needs-online>Consultar servidor</button><div id="serverList"></div></div>
+        </div>
+      </section>
+    </main>
+    <footer><span>CosmoBitácora · PWA educativa</span><span>Noticias: Spaceflight News API · Google Noticias (por ubicación)</span></footer>
+  </div>
+  <script src="/idb-helper.js" defer></script>
+  <script src="/app.js" defer></script>
+</body>
+</html>

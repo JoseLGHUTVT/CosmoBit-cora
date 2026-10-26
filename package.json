@@ -1,0 +1,12 @@
+{
+  "name": "explora-pwa",
+  "version": "1.0.0",
+  "private": true,
+  "description": "PWA de exploración espacial con API externa, modo offline y sincronización local con backend",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

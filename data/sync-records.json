@@ -1,0 +1,15 @@
+[
+  {
+    "id": "e4109f66-08c5-47d7-8a6e-30978faf700e",
+    "type": "nota",
+    "title": "El oso pardo.",
+    "detail": "Verificar noticias sobre ataque de osos.",
+    "location": {
+      "lat": 19.098523,
+      "lon": -99.595335,
+      "accuracy": 144
+    },
+    "createdAt": "2026-10-26T00:27:34.638Z",
+    "syncedAt": "2026-10-26T00:27:53.325Z"
+  }
+]

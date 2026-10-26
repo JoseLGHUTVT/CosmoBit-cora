@@ -1,0 +1,15 @@
+{
+  "id": "/",
+  "name": "CosmoBitácora - ExploraPWA",
+  "short_name": "CosmoBitácora",
+  "description": "Noticias espaciales, favoritos y bitácora con modo sin conexión.",
+  "lang": "es-MX",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#10233f",
+  "theme_color": "#10233f",
+  "icons": [
+    { "src": "/icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
